@@ -1,0 +1,142 @@
+[
+  {
+    "SeatNameAndNo": [
+      {
+        " isSelected ": true,
+        "SeatNo ": "A1 "
+      },
+      {
+        " isSelected ": true,
+        "SeatNo ": "A2 "
+      },
+      {
+        " isSelected ": true,
+        "SeatNo ": "A3 "
+      },
+      {
+        " isSelected ": true,
+        "SeatNo ": "A4 "
+      }
+    ]
+  },
+  {
+    "SeatNameAndNo": [
+      {
+        " isSelected ": true,
+        "SeatNo ": "B1 "
+      },
+      {
+        " isSelected ": true,
+        "SeatNo ": "b2 "
+      },
+      {
+        " isSelected ": true,
+        "SeatNo ": "b3"
+      },
+      {
+        " isSelected ": true,
+        "SeatNo ": "b4"
+      }
+    ]
+  },
+  {
+    "SeatNameAndNo": [
+      {
+        " isSelected ": true,
+        "SeatNo ": "c1 "
+      },
+      {
+        " isSelected ": true,
+        "SeatNo ": "c2 "
+      },
+      {
+        " isSelected ": true,
+        "SeatNo ": "c3"
+      },
+      {
+        " isSelected ": true,
+        "SeatNo ": "c4"
+      }
+    ]
+  },
+  {
+    "SeatNameAndNo": [
+      {
+        " isSelected ": true,
+        "SeatNo ": "d1 "
+      },
+      {
+        " isSelected ": true,
+        "SeatNo ": "d2 "
+      },
+      {
+        " isSelected ": true,
+        "SeatNo ": "d3"
+      },
+      {
+        " isSelected ": true,
+        "SeatNo ": "d4"
+      }
+    ]
+  },
+  {
+    "SeatNameAndNo": [
+      {
+        " isSelected ": true,
+        "SeatNo ": "e1 "
+      },
+      {
+        " isSelected ": true,
+        "SeatNo ": "e2 "
+      },
+      {
+        " isSelected ": true,
+        "SeatNo ": "e3"
+      },
+      {
+        " isSelected ": true,
+        "SeatNo ": "e4"
+      }
+    ]
+  },
+  {
+    "SeatNameAndNo": [
+      {
+        " isSelected ": true,
+        "SeatNo ": "F1 "
+      },
+      {
+        " isSelected ": true,
+        "SeatNo ": "F2 "
+      },
+      {
+        " isSelected ": true,
+        "SeatNo ": "F3"
+      },
+      {
+        " isSelected ": true,
+        "SeatNo ": "F4"
+      }
+    ]
+  },
+  {
+    "SeatNameAndNo": [
+      {
+        " isSelected ": true,
+        "SeatNo ": "G1 "
+      },
+      {
+        " isSelected ": true,
+        "SeatNo ": "G2 "
+      },
+      {
+        " isSelected ": true,
+        "SeatNo ": "G3"
+      },
+      {
+        " isSelected ": true,
+        "SeatNo ": "G4"
+      }
+    ]
+  }
+]
