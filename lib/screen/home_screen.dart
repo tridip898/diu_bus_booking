@@ -36,12 +36,13 @@ class _HomeScreenState extends State<HomeScreen> {
     );
 
     if (pickedDate != null) {
-      String formattedDate=DateFormat('dd-MM-yyyy').format(pickedDate);
+      String formattedDate = DateFormat('dd-MM-yyyy').format(pickedDate);
       setState(() {
         journeyDate = formattedDate;
       });
     }
   }
+
   Future<void> selectReturnDate(BuildContext context) async {
     logger.e("selectDate");
     final DateTime? pickedDate = await showDatePicker(
@@ -52,7 +53,7 @@ class _HomeScreenState extends State<HomeScreen> {
     );
 
     if (pickedDate != null) {
-      String formattedDate=DateFormat('dd-MM-yyyy').format(pickedDate);
+      String formattedDate = DateFormat('dd-MM-yyyy').format(pickedDate);
       setState(() {
         returnDate = formattedDate;
       });
@@ -87,7 +88,7 @@ class _HomeScreenState extends State<HomeScreen> {
                     ),
                     AppWidgets().gapH8(),
                     Text(
-                      "email",
+                      email,
                       style: textRegularStyle(
                           color: AppColors.white,
                           fontSize: 22,
@@ -114,242 +115,293 @@ class _HomeScreenState extends State<HomeScreen> {
             ],
           ),
         ),
-        body: Padding(
-          padding: mainPaddingAll(),
-          child: Obx(() {
-            return Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Form(
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Text(
-                        "From",
-                        style: textHeaderStyle(
-                            fontWeight: FontWeight.w600,
-                            fontSize: 27,
-                            color: AppColors.blackPure.withOpacity(0.8)),
-                      ),
-                      AppWidgets().gapH8(),
-                      GestureDetector(
-                        onTapDown: (tapDetails) {
-                          showMenu(
-                              context: context,
-                              position: RelativeRect.fromLTRB(
-                                  20,
-                                  tapDetails.globalPosition.dy + 20,
-                                  Get.width-10,
-                                  0),
-                              items: List.generate(
-                                  controller.fromPlaces.length,
-                                  (index) => PopupMenuItem(
-                                        onTap: () {
-                                          controller.selectedFromPlaces.value =
-                                              controller.fromPlaces[index];
-                                        },
-                                        value: controller.fromPlaces[index],
-                                        child: Text(
-                                          controller.fromPlaces[index],
-                                          style: const TextStyle(
-                                              fontSize: 12,
-                                              color: Colors.black,
-                                              fontWeight: FontWeight.bold),
-                                        ),
-                                      )));
-                        },
-                        child: SizedBox(
-                          height: 65.h,
-                          child: Container(
-                            decoration: BoxDecoration(
-                                color: Colors.white,
-                                borderRadius:
-                                    const BorderRadius.all(Radius.circular(10)),
-                                boxShadow: [
-                                  BoxShadow(
-                                      color: Colors.grey.shade300,
-                                      blurRadius: 5,
-                                      offset: const Offset(1.5, 2))
-                                ]),
-                            child: Padding(
-                              padding: const EdgeInsets.only(
-                                  left: 10.0, top: 5, right: 5, bottom: 5),
-                              child: Row(
-                                mainAxisAlignment:
-                                    MainAxisAlignment.spaceBetween,
-                                children: [
-                                  Padding(
-                                    padding: const EdgeInsets.only(left: 8.0),
-                                    child: Text(
-                                      controller.selectedFromPlaces.value,
-                                      style: textRegularStyle(
-                                          fontSize: 20,
-                                          color: AppColors.textGrey),
-                                    ),
-                                  ),
-                                  const Icon(Icons.keyboard_arrow_down)
-                                ],
-                              ),
-                            ),
-                          ),
-                        ),
-                      ),
-                      AppWidgets().gapH12(),
-                      Text(
-                        "Destination",
-                        style: textHeaderStyle(
-                            fontWeight: FontWeight.w600,
-                            fontSize: 27,
-                            color: AppColors.blackPure.withOpacity(0.8)),
-                      ),
-                      AppWidgets().gapH8(),
-                      GestureDetector(
-                        onTapDown: (tapDetails) {
-                          showMenu(
-                              context: context,
-                              position: RelativeRect.fromLTRB(
-                                  tapDetails.globalPosition.dx,
-                                  tapDetails.globalPosition.dy + 20,
-                                  20,
-                                  0),
-                              items: List.generate(
-                                  controller.toPlaces.length,
-                                  (index) => PopupMenuItem(
-                                        onTap: () {
-                                          controller.selectedToPlaces.value =
-                                              controller.toPlaces[index];
-                                        },
-                                        value: controller.toPlaces[index],
-                                        child: Text(
-                                          controller.toPlaces[index],
-                                          style: const TextStyle(
-                                              fontSize: 12,
-                                              color: Colors.black,
-                                              fontWeight: FontWeight.bold),
-                                        ),
-                                      )));
-                        },
-                        child: SizedBox(
-                          height: 65.h,
-                          child: Container(
-                            decoration: BoxDecoration(
-                                color: Colors.white,
-                                borderRadius:
-                                    const BorderRadius.all(Radius.circular(10)),
-                                boxShadow: [
-                                  BoxShadow(
-                                      color: Colors.grey.shade300,
-                                      blurRadius: 5,
-                                      offset: const Offset(1.5, 2))
-                                ]),
-                            child: Padding(
-                              padding: const EdgeInsets.only(
-                                  left: 10.0, top: 5, right: 5, bottom: 5),
-                              child: Row(
-                                mainAxisAlignment:
-                                    MainAxisAlignment.spaceBetween,
-                                children: [
-                                  Padding(
-                                    padding: const EdgeInsets.only(left: 8.0),
-                                    child: Text(
-                                      controller.selectedToPlaces.value,
-                                      style: textRegularStyle(
-                                          fontSize: 20,
-                                          color: AppColors.textGrey),
-                                    ),
-                                  ),
-                                  const Icon(Icons.keyboard_arrow_down)
-                                ],
-                              ),
-                            ),
-                          ),
-                        ),
-                      ),
-                      AppWidgets().gapH12(),
-                      Text(
-                        "Date of Journey",
-                        style: textHeaderStyle(
-                            fontWeight: FontWeight.w600,
-                            fontSize: 27,
-                            color: AppColors.blackPure.withOpacity(0.8)),
-                      ),
-                      AppWidgets().gapH8(),
-                      InkWell(
-                        onTap: () {
-                          logger.e("GestureDetector");
-                          selectDate(context);
-                        },
-                        child: Container(
-                          height: 60.h,
-                          width: Get.width,
-                          padding: EdgeInsets.symmetric(horizontal: mainPaddingW),
+        body: SingleChildScrollView(
+          child: Padding(
+            padding: mainPaddingAll(),
+            child: Obx(() {
+              return Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Center(
+                    child: Column(
+                      children: [
+                        Container(
+                          height: 100.h,
+                          width: 100.w,
+                          padding: EdgeInsets.symmetric(
+                              horizontal: 10.w, vertical: 10.h),
                           decoration: BoxDecoration(
-                            borderRadius: cornerRadius(12),
-                            border: Border.all(color: AppColors.grey,width: 1)
-                          ),
-                          child: Row(
-                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                            children: [
-                              Text(journeyDate,style: textRegularStyle(fontSize: 20,color: AppColors.textGrey),),
-                              const Icon(Icons.calendar_month,color: AppColors.grey,)
-                            ],
+                            shape: BoxShape.circle,
+                            border:
+                                Border.all(color: AppColors.darkPurple, width: 1),
+                            image: const DecorationImage(
+                                image: AssetImage("assets/jpg/bus.jpeg"),
+                                fit: BoxFit.fill),
                           ),
                         ),
-                      ),
-                      AppWidgets().gapH12(),
-                      Text(
-                        "Date of Return (Optional)",
-                        style: textHeaderStyle(
-                            fontWeight: FontWeight.w600,
-                            fontSize: 27,
-                            color: AppColors.blackPure.withOpacity(0.8)),
-                      ),
-                      AppWidgets().gapH8(),
-                      InkWell(
-                        onTap: () {
-                          logger.e("GestureDetector");
-                          selectReturnDate(context);
-                        },
-                        child: Container(
-                          height: 60.h,
-                          width: Get.width,
-                          padding: EdgeInsets.symmetric(horizontal: mainPaddingW),
-                          decoration: BoxDecoration(
-                              borderRadius: cornerRadius(12),
-                              border: Border.all(color: AppColors.grey,width: 1)
-                          ),
-                          child: Row(
-                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                            children: [
-                              Text(returnDate,style: textRegularStyle(fontSize: 20,color: AppColors.textGrey),),
-                              const Icon(Icons.calendar_month,color: AppColors.grey,)
-                            ],
-                          ),
-                        ),
-                      ),
-                      AppWidgets().gapH(Get.height * 0.1),
-                      Center(
-                        child: ElevatedButton(
-                            onPressed: () {
-                              Get.toNamed(AppRoutesConstant.busList);
-                            },
-                            style: ElevatedButton.styleFrom(
-                                backgroundColor: AppColors.primaryColor,
-                                minimumSize: Size(Get.width * 0.8, 60.h),
-                                shape: RoundedRectangleBorder(
-                                    borderRadius: cornerRadius(12))),
-                            child: Text(
-                              "Get Started",
-                              style: textButtonStyle(
-                                  fontSize: 28, fontWeight: FontWeight.w700),
-                            )),
-                      )
-                    ],
+                        Text(
+                          "Welcome to DIU",
+                          style: textHeaderStyle(),
+                        )
+                      ],
+                    ),
                   ),
-                )
-              ],
-            );
-          }),
+                  Form(
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Text(
+                          "Start",
+                          style: textHeaderStyle(
+                              fontWeight: FontWeight.w600,
+                              fontSize: 25,
+                              color: AppColors.blackPure.withOpacity(0.8)),
+                        ),
+                        AppWidgets().gapH8(),
+                        GestureDetector(
+                          onTapDown: (tapDetails) {
+                            showMenu(
+                                context: context,
+                                position: RelativeRect.fromLTRB(
+                                    tapDetails.globalPosition.dx,
+                                    tapDetails.globalPosition.dy + 20,
+                                    20,
+                                    0),
+                                items: List.generate(
+                                    controller.fromPlaces.length,
+                                    (index) => PopupMenuItem(
+                                          onTap: () {
+                                            controller.selectedFromPlaces.value =
+                                                controller.fromPlaces[index];
+                                          },
+                                          value: controller.fromPlaces[index],
+                                          child: Container(
+                                            width: Get.width-20,
+                                            child: Text(
+                                              controller.fromPlaces[index],
+                                              style: TextStyle(
+                                                  fontSize: 18.sp,
+                                                  color: Colors.black,
+                                                  fontWeight: FontWeight.bold),
+                                            ),
+                                          ),
+                                        )));
+                          },
+                          child: SizedBox(
+                            height: 65.h,
+                            child: Container(
+                              decoration: BoxDecoration(
+                                  color: Colors.white,
+                                  borderRadius:
+                                      const BorderRadius.all(Radius.circular(10)),
+                                  boxShadow: [
+                                    BoxShadow(
+                                        color: Colors.grey.shade300,
+                                        blurRadius: 5,
+                                        offset: const Offset(1.5, 2))
+                                  ]),
+                              child: Padding(
+                                padding: const EdgeInsets.only(
+                                    left: 10.0, top: 5, right: 5, bottom: 5),
+                                child: Row(
+                                  mainAxisAlignment:
+                                      MainAxisAlignment.spaceBetween,
+                                  children: [
+                                    Padding(
+                                      padding: const EdgeInsets.only(left: 8.0),
+                                      child: Text(
+                                        controller.selectedFromPlaces.value,
+                                        style: textRegularStyle(
+                                            fontSize: 20,
+                                            color: AppColors.textGrey),
+                                      ),
+                                    ),
+                                    const Icon(Icons.keyboard_arrow_down)
+                                  ],
+                                ),
+                              ),
+                            ),
+                          ),
+                        ),
+                        AppWidgets().gapH12(),
+                        Text(
+                          "Destination",
+                          style: textHeaderStyle(
+                              fontWeight: FontWeight.w600,
+                              fontSize: 25,
+                              color: AppColors.blackPure.withOpacity(0.8)),
+                        ),
+                        AppWidgets().gapH8(),
+                        GestureDetector(
+                          onTapDown: (tapDetails) {
+                            showMenu(
+                                context: context,
+                                position: RelativeRect.fromLTRB(
+                                    tapDetails.globalPosition.dx,
+                                    tapDetails.globalPosition.dy + 20,
+                                    20,
+                                    0),
+                                items: List.generate(
+                                    controller.toPlaces.length,
+                                    (index) => PopupMenuItem(
+                                          onTap: () {
+                                            controller.selectedToPlaces.value =
+                                                controller.toPlaces[index];
+                                          },
+                                          value: controller.toPlaces[index],
+                                          child: Container(
+                                            width: Get.width,
+                                            child: Text(
+                                              controller.toPlaces[index],
+                                              style: TextStyle(
+                                                  fontSize: 18.sp,
+                                                  color: Colors.black,
+                                                  fontWeight: FontWeight.bold),
+                                            ),
+                                          ),
+                                        )));
+                          },
+                          child: SizedBox(
+                            height: 65.h,
+                            child: Container(
+                              decoration: BoxDecoration(
+                                  color: Colors.white,
+                                  borderRadius:
+                                      const BorderRadius.all(Radius.circular(10)),
+                                  boxShadow: [
+                                    BoxShadow(
+                                        color: Colors.grey.shade300,
+                                        blurRadius: 5,
+                                        offset: const Offset(1.5, 2))
+                                  ]),
+                              child: Padding(
+                                padding: const EdgeInsets.only(
+                                    left: 10.0, top: 5, right: 5, bottom: 5),
+                                child: Row(
+                                  mainAxisAlignment:
+                                      MainAxisAlignment.spaceBetween,
+                                  children: [
+                                    Padding(
+                                      padding: const EdgeInsets.only(left: 8.0),
+                                      child: Text(
+                                        controller.selectedToPlaces.value,
+                                        style: textRegularStyle(
+                                            fontSize: 20,
+                                            color: AppColors.textGrey),
+                                      ),
+                                    ),
+                                    const Icon(Icons.keyboard_arrow_down)
+                                  ],
+                                ),
+                              ),
+                            ),
+                          ),
+                        ),
+                        AppWidgets().gapH12(),
+                        Text(
+                          "Date of Journey",
+                          style: textHeaderStyle(
+                              fontWeight: FontWeight.w600,
+                              fontSize: 25,
+                              color: AppColors.blackPure.withOpacity(0.8)),
+                        ),
+                        AppWidgets().gapH8(),
+                        InkWell(
+                          onTap: () {
+                            logger.e("GestureDetector");
+                            selectDate(context);
+                          },
+                          child: Container(
+                            height: 60.h,
+                            width: Get.width,
+                            padding:
+                                EdgeInsets.symmetric(horizontal: mainPaddingW),
+                            decoration: BoxDecoration(
+                                borderRadius: cornerRadius(12),
+                                border: Border.all(
+                                    color: AppColors.grey.withOpacity(0.6),
+                                    width: 1)),
+                            child: Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                              children: [
+                                Text(
+                                  journeyDate,
+                                  style: textRegularStyle(
+                                      fontSize: 20, color: AppColors.textGrey),
+                                ),
+                                const Icon(
+                                  Icons.calendar_month,
+                                  color: AppColors.grey,
+                                )
+                              ],
+                            ),
+                          ),
+                        ),
+                        AppWidgets().gapH12(),
+                        Text(
+                          "Date of Return (Optional)",
+                          style: textHeaderStyle(
+                              fontWeight: FontWeight.w600,
+                              fontSize: 25,
+                              color: AppColors.blackPure.withOpacity(0.8)),
+                        ),
+                        AppWidgets().gapH8(),
+                        InkWell(
+                          onTap: () {
+                            logger.e("GestureDetector");
+                            selectReturnDate(context);
+                          },
+                          child: Container(
+                            height: 60.h,
+                            width: Get.width,
+                            padding:
+                                EdgeInsets.symmetric(horizontal: mainPaddingW),
+                            decoration: BoxDecoration(
+                                borderRadius: cornerRadius(12),
+                                border: Border.all(
+                                    color: AppColors.grey.withOpacity(0.6),
+                                    width: 1)),
+                            child: Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                              children: [
+                                Text(
+                                  returnDate,
+                                  style: textRegularStyle(
+                                      fontSize: 20, color: AppColors.textGrey),
+                                ),
+                                const Icon(
+                                  Icons.calendar_month,
+                                  color: AppColors.grey,
+                                )
+                              ],
+                            ),
+                          ),
+                        ),
+                        AppWidgets().gapH(Get.height * 0.05),
+                        Center(
+                          child: ElevatedButton(
+                              onPressed: () {
+                                controller.journeyModel.value=JourneyModel(start: controller.selectedFromPlaces.value,destination: controller.selectedToPlaces.value,journeyDate: journeyDate);
+                                Get.toNamed(AppRoutesConstant.busList);
+                              },
+                              style: ElevatedButton.styleFrom(
+                                  backgroundColor: AppColors.primaryColor,
+                                  minimumSize: Size(Get.width * 0.8, 60.h),
+                                  shape: RoundedRectangleBorder(
+                                      borderRadius: cornerRadius(12))),
+                              child: Text(
+                                "Get Started",
+                                style: textButtonStyle(
+                                    fontSize: 28, fontWeight: FontWeight.w700),
+                              )),
+                        )
+                      ],
+                    ),
+                  )
+                ],
+              );
+            }),
+          ),
         ),
       ),
     );

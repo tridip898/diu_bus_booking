@@ -105,7 +105,7 @@ class SignInScreen extends StatelessWidget {
                           },
                           style: ElevatedButton.styleFrom(
                             minimumSize:
-                            Size(Get.width * .6, Get.height * 0.06),
+                                Size(Get.width * .6, Get.height * 0.06),
                           ),
                           child: Text(
                             "Sign in",

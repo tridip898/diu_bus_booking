@@ -107,19 +107,13 @@ class SignupPage extends StatelessWidget {
                         alignment: Alignment.center,
                         child: ElevatedButton(
                           onPressed: () {
-                            AuthController.instance.registerUser(emailController.text.trim(), passwordController.text.trim());
-                            // if(AuthController.instance.user.value != null){
-                            //   Get.toNamed(AppRoutesConstant.login);
-                            // }
-                            // if (signupFormKey.currentState!.validate()) {
-                            //   AuthController.instance.registerUser(emailController.text.trim(), passwordController.text.trim());
-                            // } else {
-                            //   logger.e("There is an error");
-                            // }
+                            AuthController.instance.registerUser(
+                                emailController.text.trim(),
+                                passwordController.text.trim(),usernameController.text);
                           },
                           style: ElevatedButton.styleFrom(
                             minimumSize:
-                            Size(Get.width * .6, Get.height * 0.06),
+                                Size(Get.width * .6, Get.height * 0.06),
                           ),
                           child: Text(
                             "Signup",

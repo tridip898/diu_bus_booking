@@ -1,4 +1,5 @@
 import 'package:bus_ticket_reseravtion_app/screen/splash_screen.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:get/get.dart';
@@ -41,10 +42,22 @@ class AuthController extends GetxController {
     }
   }
 
-  void registerUser(String email, String password) async {
+  void registerUser(String email, String password,String username) async {
     try {
-      await auth.createUserWithEmailAndPassword(
+      final userCredential = await auth.createUserWithEmailAndPassword(
           email: email, password: password);
+
+      final user=userCredential.user;
+
+      final userData = {
+        'username': username,
+        // Include other extra data fields if needed
+      };
+      await FirebaseFirestore.instance
+          .collection('users')
+          .doc(user?.uid)
+          .set(userData);
+
     } catch (e) {
       Get.snackbar("About User", "User message",
           backgroundColor: AppColors.red,
@@ -62,7 +75,7 @@ class AuthController extends GetxController {
 
   void signInUser(String email, String password) async {
     try {
-      await auth.signInWithEmailAndPassword(email: email, password: password);
+      final userCredential = await auth.signInWithEmailAndPassword(email: email, password: password);
       //Get.offAll(() => HomeScreen());
     } catch (e) {
       Get.snackbar("About login", "Login message",

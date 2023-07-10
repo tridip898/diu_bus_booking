@@ -4,6 +4,7 @@ import 'package:bus_ticket_reseravtion_app/screen/home_screen.dart';
 import 'package:bus_ticket_reseravtion_app/screen/signin_screen.dart';
 import 'package:bus_ticket_reseravtion_app/screen/signup_screen.dart';
 import 'package:bus_ticket_reseravtion_app/screen/splash_screen.dart';
+import 'package:bus_ticket_reseravtion_app/screen/ticket_details.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -58,6 +59,7 @@ class _MyAppState extends State<MyApp> {
             GetPage(name: AppRoutesConstant.homePage, page: () => HomeScreen()),
             GetPage(name: AppRoutesConstant.busList, page: () => AvailableBusList()),
             GetPage(name: AppRoutesConstant.ticketBooking, page: () => TicketBookingScreen()),
+            GetPage(name: AppRoutesConstant.ticket, page: () => TicketDetailsPage()),
           ],
         );
       },

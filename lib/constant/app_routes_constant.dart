@@ -5,4 +5,5 @@ class AppRoutesConstant {
   static const homePage = '/homePage';
   static const busList = '/busList';
   static const ticketBooking = '/ticketBooking';
+  static const ticket = '/ticket';
 }

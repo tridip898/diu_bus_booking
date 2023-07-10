@@ -27,15 +27,15 @@
       },
       {
         " isSelected ": true,
-        "SeatNo ": "b2 "
+        "SeatNo ": "B2 "
       },
       {
         " isSelected ": true,
-        "SeatNo ": "b3"
+        "SeatNo ": "B3"
       },
       {
         " isSelected ": true,
-        "SeatNo ": "b4"
+        "SeatNo ": "B4"
       }
     ]
   },
@@ -43,19 +43,19 @@
     "SeatNameAndNo": [
       {
         " isSelected ": true,
-        "SeatNo ": "c1 "
+        "SeatNo ": "C1 "
       },
       {
         " isSelected ": true,
-        "SeatNo ": "c2 "
+        "SeatNo ": "C2 "
       },
       {
         " isSelected ": true,
-        "SeatNo ": "c3"
+        "SeatNo ": "C3"
       },
       {
         " isSelected ": true,
-        "SeatNo ": "c4"
+        "SeatNo ": "C4"
       }
     ]
   },
@@ -63,19 +63,19 @@
     "SeatNameAndNo": [
       {
         " isSelected ": true,
-        "SeatNo ": "d1 "
+        "SeatNo ": "D1 "
       },
       {
         " isSelected ": true,
-        "SeatNo ": "d2 "
+        "SeatNo ": "D2 "
       },
       {
         " isSelected ": true,
-        "SeatNo ": "d3"
+        "SeatNo ": "D3"
       },
       {
         " isSelected ": true,
-        "SeatNo ": "d4"
+        "SeatNo ": "D4"
       }
     ]
   },
@@ -83,19 +83,19 @@
     "SeatNameAndNo": [
       {
         " isSelected ": true,
-        "SeatNo ": "e1 "
+        "SeatNo ": "E1 "
       },
       {
         " isSelected ": true,
-        "SeatNo ": "e2 "
+        "SeatNo ": "E2 "
       },
       {
         " isSelected ": true,
-        "SeatNo ": "e3"
+        "SeatNo ": "E3"
       },
       {
         " isSelected ": true,
-        "SeatNo ": "e4"
+        "SeatNo ": "E4"
       }
     ]
   },

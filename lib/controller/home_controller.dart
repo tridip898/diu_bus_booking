@@ -1,8 +1,17 @@
 import 'package:bus_ticket_reseravtion_app/constant/app_constant.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 import 'package:get/get.dart';
 import 'package:intl/intl.dart';
+class JourneyModel{
+  final String? start;
+  final String? destination;
+  final String? journeyDate;
+
+   JourneyModel({this.start, this.destination, this.journeyDate});
+}
+
 
 class HomeController extends GetxController{
   final fromController=TextEditingController();
@@ -12,6 +21,9 @@ class HomeController extends GetxController{
   var selectedToPlaces="Select".obs;
   final journeyDateController = TextEditingController();
   final returnDateController = TextEditingController();
+  final storage = const FlutterSecureStorage();
+
+  final journeyModel= JourneyModel().obs;
 
   @override
   void onInit() {
@@ -22,16 +34,24 @@ class HomeController extends GetxController{
   }
 
   var fromPlaces=[
+    "Ashulia",
     "Dhanmondi",
     "Uttara",
     "Mirpur",
     "Shamoly",
-    "Agargaon",
+    "Tongi",
+    "Narayanganj",
+    "Savar",
   ];
   var toPlaces=[
     "Ashulia",
-    "Akrain",
-    "Khagan"
+    "Dhanmondi",
+    "Uttara",
+    "Mirpur",
+    "Shamoly",
+    "Tongi",
+    "Narayanganj",
+    "Savar",
   ];
 
   // Future<void> selectDate(BuildContext context) async {
@@ -48,4 +68,5 @@ class HomeController extends GetxController{
   //     journeyDateController.text = formattedDate;
   //   }
   // }
+
 }

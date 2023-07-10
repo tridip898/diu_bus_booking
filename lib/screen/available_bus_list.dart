@@ -10,7 +10,8 @@ import 'package:get/get.dart';
 class AvailableBusList extends StatelessWidget {
   AvailableBusList({super.key});
 
-  final controller=Get.put(BusListController());
+  final controller = Get.put(BusListController());
+
   @override
   Widget build(BuildContext context) {
     return SafeArea(
@@ -38,36 +39,54 @@ class AvailableBusList extends StatelessWidget {
               Expanded(
                 child: ListView.separated(
                     itemBuilder: (context, index) {
-                      return Padding(
-                        padding: EdgeInsets.symmetric(horizontal: mainPaddingW),
-                        child: InkWell(
-                          onTap: (){
-                            Get.toNamed(AppRoutesConstant.ticketBooking,arguments: controller.vehicle[index]);
-                          },
-                          child: Row(
-                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                            children: [
-                              Column(
-                                crossAxisAlignment: CrossAxisAlignment.start,
-                                children: [
-                                  Text(controller.vehicle[index].busName,style: textHeaderStyle(fontSize: 25),),
-                                  Text(controller.vehicle[index].route,style: textRegularStyle(fontSize: 20),)
-                                ],
-                              ),
-                              Column(
-                                crossAxisAlignment: CrossAxisAlignment.end,
-                                children: [
-                                  Text(controller.vehicle[index].fare,style: textHeaderStyle(fontSize: 23,color: AppColors.primaryColor),),
-                                  Text(controller.vehicle[index].time,style: textRegularStyle(fontSize: 20),)
-                                ],
-                              ),
-                            ],
+                      return Obx(() {
+                        return Padding(
+                          padding:
+                              EdgeInsets.symmetric(horizontal: mainPaddingW),
+                          child: InkWell(
+                            onTap: () {
+                              Get.toNamed(AppRoutesConstant.ticketBooking,
+                                  arguments: controller.vehicle[index]);
+                            },
+                            child: Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                              children: [
+                                Column(
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  children: [
+                                    Text(
+                                      controller.vehicle[index].busName,
+                                      style: textHeaderStyle(fontSize: 25,fontWeight: FontWeight.w600),
+                                    ),
+                                    Text(
+                                      controller.vehicle[index].route,
+                                      style: textRegularStyle(fontSize: 20,color: AppColors.textGrey),
+                                    )
+                                  ],
+                                ),
+                                Column(
+                                  crossAxisAlignment: CrossAxisAlignment.end,
+                                  children: [
+                                    Text(
+                                      controller.vehicle[index].fare,
+                                      style: textHeaderStyle(
+                                          fontSize: 23,
+                                          color: AppColors.primaryColor),
+                                    ),
+                                    Text(
+                                      controller.vehicle[index].time,
+                                      style: textRegularStyle(fontSize: 20,color: AppColors.textGrey),
+                                    )
+                                  ],
+                                ),
+                              ],
+                            ),
                           ),
-                        ),
-                      );
+                        );
+                      });
                     },
                     separatorBuilder: (context, index) {
-                      return Divider();
+                      return const Divider();
                     },
                     itemCount: controller.vehicle.length),
               )
