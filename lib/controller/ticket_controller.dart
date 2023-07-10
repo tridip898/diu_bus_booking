@@ -6,22 +6,16 @@ class TicketController extends GetxController{
   late String paymentMethod;
   late VehicleModel vehicleModel;
   final storage=const FlutterSecureStorage();
-  RxString journeyDate="".obs;
+  //RxString journeyDate="".obs;
 
   @override
   void onInit() {
     // TODO: implement onInit
     paymentMethod=Get.arguments[0];
     vehicleModel=Get.arguments[1];
-    getJourneyDate();
     super.onInit();
   }
 
-
-  Future<void> getJourneyDate() async {
-    journeyDate.value= (await storage.read(key: 'journeyDate'))!;
-
-  }
   @override
   void onClose() {
     print("Finish");

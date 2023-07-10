@@ -14,7 +14,6 @@ import '../controller/auth_controller.dart';
 
 class HomeScreen extends StatefulWidget {
   String? email;
-
   HomeScreen({super.key, this.email});
 
   @override
@@ -88,7 +87,7 @@ class _HomeScreenState extends State<HomeScreen> {
                     ),
                     AppWidgets().gapH8(),
                     Text(
-                      email,
+                      widget.email??'',
                       style: textRegularStyle(
                           color: AppColors.white,
                           fontSize: 22,

@@ -72,7 +72,10 @@ class _TicketBookingScreenState extends State<TicketBookingScreen> {
                 "Confirm your Seat",
                 style: textHeaderStyle(fontSize: 27),
               ),
-              AppWidgets().gapH(Get.height * 0.05),
+              AppWidgets().gapH(Get.height * 0.01),
+              Text("Route: ${controller.vehicles.route}",style: textRegularStyle(fontSize: 20,color: AppColors.textGrey),),
+              Text("Time: ${controller.vehicles.time}",style: textRegularStyle(fontSize: 20,color: AppColors.textGrey),),
+              Text("Driver: ${controller.vehicles.driverName}",style: textRegularStyle(fontSize: 20,color: AppColors.textGrey),),
               Align(
                   alignment: Alignment.topRight,
                   child: Padding(
@@ -364,7 +367,7 @@ class _TicketBookingScreenState extends State<TicketBookingScreen> {
                           fontSize: 28, fontWeight: FontWeight.w700),
                     )),
               ),
-              AppWidgets().gapH(Get.height * 0.05)
+              AppWidgets().gapH(Get.height * 0.02)
             ],
           ),
         ),

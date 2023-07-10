@@ -60,8 +60,10 @@ class TicketDetailsPage extends StatelessWidget {
                                     fontSize: 26, fontWeight: FontWeight.w600),
                               ),
                               Text(
-                                "Tridip Bhowmik",
+                                "Mansur Billah",
                                 style: textRegularStyle(fontSize: 24),
+                                maxLines: 1,
+                                overflow: TextOverflow.ellipsis,
                               ),
                             ],
                           ),
@@ -75,6 +77,8 @@ class TicketDetailsPage extends StatelessWidget {
                               Text(
                                 controller.vehicleModel.route,
                                 style: textRegularStyle(fontSize: 24),
+                                maxLines: 1,
+                                overflow: TextOverflow.ellipsis,
                               ),
                             ],
                           ),
@@ -91,6 +95,8 @@ class TicketDetailsPage extends StatelessWidget {
                                       .find<BookingController>()
                                       .seatList.join(","),
                                   style: textRegularStyle(fontSize: 24),
+                                  maxLines: 1,
+                                  overflow: TextOverflow.ellipsis,
                                 );
                               }),
                             ],
@@ -110,6 +116,8 @@ class TicketDetailsPage extends StatelessWidget {
                                       .value
                                       .journeyDate ?? "",
                                   style: textRegularStyle(fontSize: 24),
+                                  maxLines: 1,
+                                  overflow: TextOverflow.ellipsis,
                                 );
                               }),
                             ],
@@ -126,6 +134,8 @@ class TicketDetailsPage extends StatelessWidget {
                                     .find<BookingController>()
                                     .seatList.length} tk",
                                 style: textRegularStyle(fontSize: 24),
+                                maxLines: 1,
+                                overflow: TextOverflow.ellipsis,
                               ),
                             ],
                           ),
@@ -139,6 +149,8 @@ class TicketDetailsPage extends StatelessWidget {
                               Text(
                                 controller.vehicleModel.busName,
                                 style: textRegularStyle(fontSize: 24),
+                                maxLines: 1,
+                                overflow: TextOverflow.ellipsis,
                               ),
                             ],
                           ),
@@ -152,6 +164,8 @@ class TicketDetailsPage extends StatelessWidget {
                               Text(
                                 controller.vehicleModel.driverName,
                                 style: textRegularStyle(fontSize: 24),
+                                maxLines: 1,
+                                overflow: TextOverflow.ellipsis,
                               ),
                             ],
                           ),
@@ -165,6 +179,8 @@ class TicketDetailsPage extends StatelessWidget {
                               Text(
                                 controller.paymentMethod,
                                 style: textRegularStyle(fontSize: 24),
+                                maxLines: 1,
+                                overflow: TextOverflow.ellipsis,
                               ),
                             ],
                           ),
