@@ -64,6 +64,13 @@ class _TicketBookingScreenState extends State<TicketBookingScreen> {
                 style: textHeaderStyle(fontSize: 27),
               ),
               AppWidgets().gapH(Get.height * 0.05),
+              Align(
+                alignment: Alignment.topRight,
+                  child: Padding(
+                    padding: EdgeInsets.symmetric(horizontal: mainPaddingW),
+                    child: Image.asset("assets/png/steering.png",height: 50.h,),
+                  )),
+              AppWidgets().gapH16(),
               Expanded(
                 child: ListView.builder(
                     itemCount: data.length,
@@ -84,6 +91,7 @@ class _TicketBookingScreenState extends State<TicketBookingScreen> {
                                   },
                                   child: Container(
                                     height: 55.h,
+                                    alignment: Alignment.center,
                                     decoration: BoxDecoration(
                                         color: data[index]
                                             .seatNameAndNo[0]
@@ -92,7 +100,7 @@ class _TicketBookingScreenState extends State<TicketBookingScreen> {
                                             : Colors.red,
                                         borderRadius: cornerRadius(8)),
                                     child:
-                                        Text(data[index].seatNameAndNo[0].seatNo),
+                                        Text(data[index].seatNameAndNo[0].seatNo,style: textHeaderStyle(fontSize: 24,color: AppColors.white),),
                                   ),
                                 ),
                               ),
@@ -109,6 +117,7 @@ class _TicketBookingScreenState extends State<TicketBookingScreen> {
                                   },
                                   child: Container(
                                     height: 55.h,
+                                    alignment: Alignment.center,
                                     decoration: BoxDecoration(
                                         color: data[index]
                                                 .seatNameAndNo[1]
@@ -117,11 +126,11 @@ class _TicketBookingScreenState extends State<TicketBookingScreen> {
                                             : Colors.red,
                                         borderRadius: cornerRadius(8)),
                                     child: Text(
-                                        data[index].seatNameAndNo[1].seatNo),
+                                        data[index].seatNameAndNo[1].seatNo,style: textHeaderStyle(fontSize: 24,color: AppColors.white),),
                                   ),
                                 ),
                               ),
-                              AppWidgets().gapW(Get.width * 0.1),
+                              AppWidgets().gapW(Get.width * 0.2),
                               Expanded(
                                 child: InkWell(
                                   onTap: (){
@@ -134,6 +143,7 @@ class _TicketBookingScreenState extends State<TicketBookingScreen> {
                                   },
                                   child: Container(
                                     height: 55.h,
+                                    alignment: Alignment.center,
                                     decoration: BoxDecoration(
                                         color: data[index]
                                             .seatNameAndNo[2]
@@ -142,7 +152,7 @@ class _TicketBookingScreenState extends State<TicketBookingScreen> {
                                             : Colors.red,
                                         borderRadius: cornerRadius(8)),
                                     child:
-                                        Text(data[index].seatNameAndNo[2].seatNo),
+                                        Text(data[index].seatNameAndNo[2].seatNo,style: textHeaderStyle(color: AppColors.white,fontSize: 24),),
                                   ),
                                 ),
                               ),
@@ -159,6 +169,7 @@ class _TicketBookingScreenState extends State<TicketBookingScreen> {
                                   },
                                   child: Container(
                                     height: 55.h,
+                                    alignment: Alignment.center,
                                     decoration: BoxDecoration(
                                         color: data[index]
                                             .seatNameAndNo[3]
@@ -167,7 +178,7 @@ class _TicketBookingScreenState extends State<TicketBookingScreen> {
                                             : Colors.red,
                                         borderRadius: cornerRadius(8)),
                                     child:
-                                        Text(data[index].seatNameAndNo[3].seatNo),
+                                        Text(data[index].seatNameAndNo[3].seatNo,style: textHeaderStyle(fontSize: 24,color: AppColors.white),),
                                   ),
                                 ),
                               ),
@@ -181,7 +192,17 @@ class _TicketBookingScreenState extends State<TicketBookingScreen> {
               Center(
                 child: ElevatedButton(
                     onPressed: () {
-                      //Get.toNamed(AppRoutesConstant.busList);
+                      Get.dialog(
+                          AlertDialog(
+                            title: Text("Select your gateway"),
+                            content: Column(
+                              children: [
+                                Divider(color: AppColors.blackPure,),
+
+                              ],
+                            ),
+                          ),
+                      );
                     },
                     style: ElevatedButton.styleFrom(
                         backgroundColor: AppColors.primaryColor,
@@ -194,7 +215,7 @@ class _TicketBookingScreenState extends State<TicketBookingScreen> {
                           fontSize: 28, fontWeight: FontWeight.w700),
                     )),
               ),
-              AppWidgets().gapH(Get.height * 0.1)
+              AppWidgets().gapH(Get.height * 0.05)
             ],
           ),
         ),

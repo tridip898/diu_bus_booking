@@ -5,18 +5,59 @@ import 'package:bus_ticket_reseravtion_app/widget/app_textfield.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
+import 'package:intl/intl.dart';
 
 import '../constant/app_color.dart';
 import '../constant/app_style.dart';
 import '../constant/app_widgets.dart';
 import '../controller/auth_controller.dart';
 
-class HomeScreen extends StatelessWidget {
+class HomeScreen extends StatefulWidget {
   String? email;
 
   HomeScreen({super.key, this.email});
 
+  @override
+  State<HomeScreen> createState() => _HomeScreenState();
+}
+
+class _HomeScreenState extends State<HomeScreen> {
   final controller = Get.put(HomeController());
+  late String journeyDate = "Select Date";
+  late String returnDate = "Select Date";
+
+  Future<void> selectDate(BuildContext context) async {
+    logger.e("selectDate");
+    final DateTime? pickedDate = await showDatePicker(
+      context: context,
+      initialDate: DateTime.now(),
+      firstDate: DateTime(2020),
+      lastDate: DateTime(2025),
+    );
+
+    if (pickedDate != null) {
+      String formattedDate=DateFormat('dd-MM-yyyy').format(pickedDate);
+      setState(() {
+        journeyDate = formattedDate;
+      });
+    }
+  }
+  Future<void> selectReturnDate(BuildContext context) async {
+    logger.e("selectDate");
+    final DateTime? pickedDate = await showDatePicker(
+      context: context,
+      initialDate: DateTime.now(),
+      firstDate: DateTime(2020),
+      lastDate: DateTime(2025),
+    );
+
+    if (pickedDate != null) {
+      String formattedDate=DateFormat('dd-MM-yyyy').format(pickedDate);
+      setState(() {
+        returnDate = formattedDate;
+      });
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -96,9 +137,9 @@ class HomeScreen extends StatelessWidget {
                           showMenu(
                               context: context,
                               position: RelativeRect.fromLTRB(
-                                  tapDetails.globalPosition.dx,
-                                  tapDetails.globalPosition.dy + 20,
                                   20,
+                                  tapDetails.globalPosition.dy + 20,
+                                  Get.width-10,
                                   0),
                               items: List.generate(
                                   controller.fromPlaces.length,
@@ -236,31 +277,23 @@ class HomeScreen extends StatelessWidget {
                       InkWell(
                         onTap: () {
                           logger.e("GestureDetector");
-                          controller.selectDate;
+                          selectDate(context);
                         },
-                        child: TextField(
-                          controller: controller.journeyDateController,
-                          readOnly: true,
-                          decoration: InputDecoration(
-                              hintText: "Choose your date",
-                              suffixIcon:
-                                  const Icon(Icons.calendar_month_outlined),
-                              border: OutlineInputBorder(
-                                  borderRadius: cornerRadius(12),
-                                  borderSide: const BorderSide(
-                                      color: AppColors.grey, width: 1)),
-                              disabledBorder: OutlineInputBorder(
-                                  borderRadius: cornerRadius(12),
-                                  borderSide: const BorderSide(
-                                      color: AppColors.grey, width: 1)),
-                              enabledBorder: OutlineInputBorder(
-                                  borderRadius: cornerRadius(12),
-                                  borderSide: const BorderSide(
-                                      color: AppColors.grey, width: 1)),
-                              focusedBorder: OutlineInputBorder(
-                                  borderRadius: cornerRadius(12),
-                                  borderSide: const BorderSide(
-                                      color: AppColors.grey, width: 1))),
+                        child: Container(
+                          height: 60.h,
+                          width: Get.width,
+                          padding: EdgeInsets.symmetric(horizontal: mainPaddingW),
+                          decoration: BoxDecoration(
+                            borderRadius: cornerRadius(12),
+                            border: Border.all(color: AppColors.grey,width: 1)
+                          ),
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            children: [
+                              Text(journeyDate,style: textRegularStyle(fontSize: 20,color: AppColors.textGrey),),
+                              const Icon(Icons.calendar_month,color: AppColors.grey,)
+                            ],
+                          ),
                         ),
                       ),
                       AppWidgets().gapH12(),
@@ -272,33 +305,26 @@ class HomeScreen extends StatelessWidget {
                             color: AppColors.blackPure.withOpacity(0.8)),
                       ),
                       AppWidgets().gapH8(),
-                      GestureDetector(
+                      InkWell(
                         onTap: () {
-                          controller.selectDate;
+                          logger.e("GestureDetector");
+                          selectReturnDate(context);
                         },
-                        child: TextField(
-                          controller: controller.journeyDateController,
-                          readOnly: true,
-                          decoration: InputDecoration(
-                              hintText: "Choose your date",
-                              suffixIcon:
-                                  const Icon(Icons.calendar_month_outlined),
-                              border: OutlineInputBorder(
-                                  borderRadius: cornerRadius(12),
-                                  borderSide: const BorderSide(
-                                      color: AppColors.grey, width: 1)),
-                              disabledBorder: OutlineInputBorder(
-                                  borderRadius: cornerRadius(12),
-                                  borderSide: const BorderSide(
-                                      color: AppColors.grey, width: 1)),
-                              enabledBorder: OutlineInputBorder(
-                                  borderRadius: cornerRadius(12),
-                                  borderSide: const BorderSide(
-                                      color: AppColors.grey, width: 1)),
-                              focusedBorder: OutlineInputBorder(
-                                  borderRadius: cornerRadius(12),
-                                  borderSide: const BorderSide(
-                                      color: AppColors.grey, width: 1))),
+                        child: Container(
+                          height: 60.h,
+                          width: Get.width,
+                          padding: EdgeInsets.symmetric(horizontal: mainPaddingW),
+                          decoration: BoxDecoration(
+                              borderRadius: cornerRadius(12),
+                              border: Border.all(color: AppColors.grey,width: 1)
+                          ),
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            children: [
+                              Text(returnDate,style: textRegularStyle(fontSize: 20,color: AppColors.textGrey),),
+                              const Icon(Icons.calendar_month,color: AppColors.grey,)
+                            ],
+                          ),
                         ),
                       ),
                       AppWidgets().gapH(Get.height * 0.1),

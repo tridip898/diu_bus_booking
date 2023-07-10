@@ -34,18 +34,18 @@ class HomeController extends GetxController{
     "Khagan"
   ];
 
-  Future<void> selectDate(BuildContext context) async {
-    logger.e("selectDate");
-    final DateTime? pickedDate = await showDatePicker(
-      context: Get.context!,
-      initialDate: DateTime.now(),
-      firstDate: DateTime(2020),
-      lastDate: DateTime(2025),
-    );
-
-    if (pickedDate != null) {
-      String formattedDate=DateFormat('yyyy-MM-dd').format(pickedDate);
-      journeyDateController.text = formattedDate;
-    }
-  }
+  // Future<void> selectDate(BuildContext context) async {
+  //   logger.e("selectDate");
+  //   final DateTime? pickedDate = await showDatePicker(
+  //     context: Get.context!,
+  //     initialDate: DateTime.now(),
+  //     firstDate: DateTime(2020),
+  //     lastDate: DateTime(2025),
+  //   );
+  //
+  //   if (pickedDate != null) {
+  //     String formattedDate=DateFormat('yyyy-MM-dd').format(pickedDate);
+  //     journeyDateController.text = formattedDate;
+  //   }
+  // }
 }
